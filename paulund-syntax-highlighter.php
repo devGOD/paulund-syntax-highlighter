@@ -28,8 +28,8 @@ add_action('wp_enqueue_scripts', 'pu_load_styles');
  */
 function pu_load_styles()
 {
-    wp_enqueue_script( 'prism_js', plugins_url( '/js/prism.js' , __FILE__ ) , array( 'jquery' ), NULL, true );
-    wp_enqueue_style( 'prism_css', plugins_url( '/css/prism.css' , __FILE__ ) );
+    wp_enqueue_script( 'prism_js', plugins_url( '/js/prism.js' , __FILE__ ) , array( 'jquery' ), false, true );
+    wp_enqueue_style( 'prism_css', plugins_url( '/css/prism.css' , __FILE__ ), array(), false );
 }
 
 remove_filter( 'the_content', 'wpautop' );
@@ -47,7 +47,7 @@ add_shortcode( 'php' , 'paulund_hightlight_php' );
 
 function paulund_hightlight_html($atts, $content = null)
 {
-    return pu_encode_content('html', $content);
+    return pu_encode_content('markup', $content);
 }
 
 function paulund_hightlight_css($atts, $content = null)
